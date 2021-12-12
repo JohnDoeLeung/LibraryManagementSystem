@@ -1,2 +1,0 @@
-# LibraryManagementSystem
-LibraryManagementSystem by Java

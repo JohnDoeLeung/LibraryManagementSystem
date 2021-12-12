@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$USER_HOME$/AppData/Local/Temp/Temp1_Java_Library_Management_System-master.zip/Java_Library_Management_System-master/src/view/BookSearch.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/Main.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/Adduser.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/Book.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/BorrowRecords.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/Category.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/ConnectDatabase.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/FindBook.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/FindBorrow.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/Landing.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/ModifyPassword.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/database/UpdateAdmin.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/AccountManagement.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/AddBook.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/AddCategory.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/Admin.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/AdminAccount.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/AdminBorrow.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/AdminSetPass.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/BookAdmin.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/BookSearch.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/BorrowRecords.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/BorrowingReturning.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/DeleteBook.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/Land.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/MainInterface.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/ModifyBook.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/ModifyCategory.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/ModifyInformation.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/ModifyPassword.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/Permissions.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/viewgui/Register.java" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
