@@ -1,0 +1,189 @@
+package viewgui.english;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Vector;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
+import database.FindBook;
+
+/**
+ * 图书查询界面
+ * */
+public class BookSearchEnglish {
+    /*
+     * 一个大标签
+     *
+     * 一个下拉框 一个文本框 一个按钮
+     *
+     * 一个表格
+     */
+    // 分层窗格
+    public JLayeredPane jLayeredPane = new JLayeredPane();
+    // 标签
+    private JLabel jLabel = new JLabel("BookQuery");
+    private JLabel jLabel2 = new JLabel("SelectQueryMode：");
+    // 文本框
+    private JTextField field = new JTextField(25);
+    // 大小
+    private Dimension dimension = new Dimension(220, 30);
+    // 下拉框
+    private JComboBox<String> box = new JComboBox<String>();
+    // 按钮
+    private JButton button = new JButton("Search");
+    // 表格
+    public DefaultTableModel model = new DefaultTableModel();
+    // 字体
+    private Font font = new Font("宋体", Font.BOLD, 60);
+    private Font font1 = new Font("宋体", Font.BOLD, 25);
+    private Font font2 = new Font("宋体", Font.BOLD, 20);
+    // 存储下拉选项
+    private String s;
+    private String book;
+    private int id;
+
+    public BookSearchEnglish() {
+
+        // 标签
+        jLabel.setFont(font);
+        jLabel.setBounds(485, 35, 800, 100);
+        jLabel.setForeground(Color.black);
+
+        jLabel2.setFont(font1);
+        jLabel2.setBounds(180, 130, 250, 30);
+        jLabel2.setForeground(Color.black);
+
+        // 下拉框
+        box.setSize(dimension);
+        box.addItem("FindByCategory");
+        box.addItem("FindByTitleName");
+        box.addItem("FindByAuthor");
+        box.addItem("FindByISBN");
+        box.setFont(font2);
+        box.setBounds(180, 170, 200, 40);
+        box.setBackground(Color.white);
+        box.setOpaque(false);
+
+        // 文本框
+        field.setFont(font2);
+        field.setSize(dimension);
+        field.setBackground(Color.black);
+        field.setBounds(480, 173, 250, 35);
+        field.setForeground(Color.black);
+        field.setOpaque(false);
+
+        // 按钮
+        button.setFont(font2);
+        button.setBounds(850, 170, 100, 40);
+        button.setForeground(Color.black);
+        button.setBackground(Color.cyan);
+        button.setOpaque(false);
+
+        // 表格
+        model.addColumn("ISBN", new Vector<Integer>());
+        model.addColumn("Category", new Vector<Integer>());
+        model.addColumn("TitleName", new Vector<Integer>());
+        model.addColumn("Author", new Vector<Integer>());
+        model.addColumn("Publisher", new Vector<Integer>());
+        model.addColumn("Status", new Vector<Integer>());
+        JTable jTable = new JTable(model);
+
+        JScrollPane pane = new JScrollPane(jTable);
+        pane.setBounds(180, 250, 800, 400);
+
+//	for(int k = 0; k < 30; k++) {
+//		model.addRow(new Vector<Integer>());
+//	}
+        FindBook.allbook(model);
+
+        JTableHeader head = jTable.getTableHeader();
+        // 设置表头的大小
+        head.setPreferredSize(new Dimension(head.getWidth(), 30));
+        // 设置表头字体大小
+        head.setFont(new Font("宋体", Font.BOLD, 20));
+        head.setForeground(Color.darkGray);
+        head.setBackground(Color.yellow);
+        // 设置表格的行宽
+        jTable.setRowHeight(30);
+        // 设置表格行中字体大小
+        jTable.setFont(new Font("宋体", Font.ROMAN_BASELINE, 17));
+        /* 设置表格中的内容居中 */
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+        jTable.setDefaultRenderer(Object.class, renderer);
+
+        //添加事件
+        addEvent();
+
+        // 加入分层窗口
+        jLayeredPane.add(jLabel, new Integer(100), 0);
+        jLayeredPane.add(jLabel2, new Integer(100), 1);
+        jLayeredPane.add(box, new Integer(100), 2);
+        jLayeredPane.add(field, new Integer(100), 3);
+        jLayeredPane.add(button, new Integer(100), 4);
+        jLayeredPane.add(pane, new Integer(100), 5);
+    }
+
+    private void addEvent() {
+
+        //获取下拉列表值
+        s = "按照类别查找";
+        box.addItemListener(new ItemListener() {
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                // TODO Auto-generated method stub
+                if(e.getStateChange()==ItemEvent.SELECTED) {
+                    s=(String)e.getItem();
+                }
+            }
+        });
+
+        //添加搜索按钮事件
+        button.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                model.setRowCount(0);
+                if(s.equals("FindByCategory")) {
+                    book=field.getText().trim();
+                    FindBook.findcategory(model, book);
+                }
+                else if(s.equals("FindByTitleName")) {
+                    book=field.getText().trim();
+                    FindBook.findbookname(model, book);
+                }
+                else if(s.equals("FindByAuthor")) {
+                    book=field.getText().trim();
+                    FindBook.findauthor(model, book);
+                }
+                else if(s.equals("FindByISBN")) {
+                    try {
+                        id= Integer.parseInt(field.getText().trim());
+                        FindBook.findbookid(model, id);
+                    }
+                    catch(Exception e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                field.setText("");
+            }
+        });
+    }
+}
